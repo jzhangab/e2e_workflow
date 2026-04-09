@@ -657,6 +657,7 @@ const researchStageCmc: DocumentContent = {
       level: 1,
       paragraphs: [
         'Preliminary analytical methods were developed to support research-stage characterization and early development activities:',
+        `Research-grade ${DRUG.code} HCl (Form I) was characterized as having HPLC purity of 99.4% (area), chiral purity >99.5% ee, water content 0.12% (KF), and chloride content 7.25% (theory: 7.31%). These methods will be transferred and validated under GMP during IND-enabling development.`,
       ],
       lists: [
         {
@@ -669,9 +670,6 @@ const researchStageCmc: DocumentContent = {
             'Ion chromatography for chloride content in HCl salt.',
           ],
         },
-      ],
-      paragraphs: [
-        `Research-grade ${DRUG.code} HCl (Form I) was characterized as having HPLC purity of 99.4% (area), chiral purity >99.5% ee, water content 0.12% (KF), and chloride content 7.25% (theory: 7.31%). These methods will be transferred and validated under GMP during IND-enabling development.`,
       ],
     },
     {

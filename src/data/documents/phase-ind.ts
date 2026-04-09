@@ -1,5 +1,5 @@
 import { registerDocument } from './index';
-import { DRUG, STUDIES, REGULATORY, EFFICACY, SAFETY } from '../drug-candidate';
+import { DRUG, STUDIES, REGULATORY } from '../drug-candidate';
 import type { DocumentContent } from '../../types';
 
 // ---------------------------------------------------------------------------
@@ -385,6 +385,7 @@ const clinicalProtocolFih: DocumentContent = {
       level: 1,
       paragraphs: [
         `The DLT evaluation window is Cycle 1 (28 days). DLTs are defined as any of the following events considered at least possibly related to ${DRUG.code}:`,
+        `Stopping Rules: Enrollment will be paused if: (a) \u22652/6 patients experience DLTs at any dose level; (b) a treatment-related death occurs; (c) the DSMB recommends suspension. The Sponsor\u2019s Safety Review Committee will convene within 72 hours of any stopping rule trigger.`,
       ],
       lists: [
         {
@@ -398,9 +399,6 @@ const clinicalProtocolFih: DocumentContent = {
             'Any treatment-related toxicity resulting in inability to receive \u226575% of planned dose in Cycle 1',
           ],
         },
-      ],
-      paragraphs: [
-        `Stopping Rules: Enrollment will be paused if: (a) \u22652/6 patients experience DLTs at any dose level; (b) a treatment-related death occurs; (c) the DSMB recommends suspension. The Sponsor\u2019s Safety Review Committee will convene within 72 hours of any stopping rule trigger.`,
       ],
     },
     {

@@ -1,5 +1,5 @@
 import { registerDocument } from './index';
-import { DRUG, STUDIES, REGULATORY, EFFICACY, SAFETY, CDX, TIMELINE } from '../drug-candidate';
+import { DRUG, STUDIES, REGULATORY, EFFICACY, SAFETY, CDX } from '../drug-candidate';
 import type { DocumentContent } from '../../types';
 
 // =============================================================================

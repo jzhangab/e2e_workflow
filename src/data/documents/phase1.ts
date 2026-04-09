@@ -227,6 +227,7 @@ const statisticalAnalysisPlan: DocumentContent = {
       level: 1,
       paragraphs: [
         `Pharmacokinetic parameters will be derived using noncompartmental analysis (NCA) performed with Phoenix WinNonlin version 8.4. The following parameters will be calculated for single-dose (Cycle 1 Day 1) and steady-state (Cycle 1 Day 15) profiles:`,
+        `Dose proportionality will be assessed across dose levels using a power model (log-transformed AUC and Cmax vs. log-transformed dose) with 90% confidence intervals for the slope parameter.`,
       ],
       tables: [
         {
@@ -243,9 +244,6 @@ const statisticalAnalysisPlan: DocumentContent = {
             ['Rac', 'Accumulation ratio', 'AUC0-24(Day 15) / AUC0-24(Day 1)'],
           ],
         },
-      ],
-      paragraphs: [
-        `Dose proportionality will be assessed across dose levels using a power model (log-transformed AUC and Cmax vs. log-transformed dose) with 90% confidence intervals for the slope parameter.`,
       ],
     },
     {
@@ -866,6 +864,7 @@ const indSafetyReports: DocumentContent = {
       level: 1,
       paragraphs: [
         `IND Safety Reports for Protocol ${STUDIES.phase1.id} are submitted to the FDA in compliance with 21 CFR 312.32. The following events require expedited reporting:`,
+        `Each IND Safety Report includes: a MedWatch 3500A form, a narrative summary of the event, relevant laboratory and diagnostic data, investigator\u2019s assessment of causality, current Investigator\u2019s Brochure reference safety information, and an analysis of similar events across the clinical program.`,
       ],
       lists: [
         {
@@ -875,9 +874,6 @@ const indSafetyReports: DocumentContent = {
             'Annual IND Safety Report (21 CFR 312.33): Comprehensive summary of all IND safety information submitted within 60 days of the IND anniversary date',
           ],
         },
-      ],
-      paragraphs: [
-        `Each IND Safety Report includes: a MedWatch 3500A form, a narrative summary of the event, relevant laboratory and diagnostic data, investigator\u2019s assessment of causality, current Investigator\u2019s Brochure reference safety information, and an analysis of similar events across the clinical program.`,
       ],
     },
     {

@@ -433,6 +433,7 @@ export function addWatermark(doc: jsPDF): void {
 
     // Save graphics state, rotate, draw, restore
     doc.saveGraphicsState();
+    // @ts-expect-error jsPDF GState constructor not typed
     doc.setGState(new doc.GState({ opacity: 0.08 }));
 
     // Draw diagonal text using translate + rotate

@@ -123,6 +123,7 @@ const glpToxicologyReports: DocumentContent = {
       level: 1,
       paragraphs: [
         `The principal target organ of toxicity for ${DRUG.code} in both species was the liver. Microscopic findings included:`,
+        'All hepatic findings were fully reversible after the 14-day recovery period, with no residual histopathological changes in recovery group animals at any dose level.',
       ],
       lists: [
         {
@@ -134,9 +135,6 @@ const glpToxicologyReports: DocumentContent = {
             'No findings in other organs: Comprehensive histopathological examination of 45 tissues per animal revealed no treatment-related findings outside the liver.',
           ],
         },
-      ],
-      paragraphs: [
-        'All hepatic findings were fully reversible after the 14-day recovery period, with no residual histopathological changes in recovery group animals at any dose level.',
       ],
     },
     {
@@ -879,6 +877,7 @@ const reproductiveTox: DocumentContent = {
       level: 1,
       paragraphs: [
         `A GLP-compliant EFD study was conducted in pregnant Sprague-Dawley rats (n=22/group). ${DRUG.code} was administered by oral gavage on gestation days (GD) 6-17 at doses of 0 (vehicle), 10, 30, and 100 mg/kg/day. Caesarean sections were performed on GD 21, and fetuses were examined for external, visceral, and skeletal abnormalities.`,
+        `At the highest dose (100 mg/kg/day), maternal toxicity was evident as reduced body weight gain (-22%) and food consumption (-18%). Fetal findings at this dose included reduced fetal body weight and increased incidence of skeletal variations (delayed ossification of sternebrae and phalanges), which are considered secondary to maternal toxicity rather than a direct teratogenic effect. No malformations were attributed to ${DRUG.code} treatment.`,
       ],
       tables: [
         {
@@ -904,15 +903,13 @@ const reproductiveTox: DocumentContent = {
           ],
         },
       ],
-      paragraphs: [
-        `At the highest dose (100 mg/kg/day), maternal toxicity was evident as reduced body weight gain (-22%) and food consumption (-18%). Fetal findings at this dose included reduced fetal body weight and increased incidence of skeletal variations (delayed ossification of sternebrae and phalanges), which are considered secondary to maternal toxicity rather than a direct teratogenic effect. No malformations were attributed to ${DRUG.code} treatment.`,
-      ],
     },
     {
       heading: 'Fertility Assessment',
       level: 1,
       paragraphs: [
         `Per ICH S9 and S5(R3), a dedicated fertility study is not required for an oncology drug at the IND stage. Reproductive organ histopathology from the 28-day repeat-dose toxicity studies in rats and dogs was reviewed for potential effects on fertility:`,
+        'Based on the absence of reproductive organ findings in repeat-dose studies, a dedicated fertility study is waived at this time. A fertility study will be conducted if warranted by clinical observations or regulatory request.',
       ],
       lists: [
         {
@@ -923,9 +920,6 @@ const reproductiveTox: DocumentContent = {
             'Sperm parameters (count, motility, morphology) in male rats at the high dose were comparable to controls.',
           ],
         },
-      ],
-      paragraphs: [
-        'Based on the absence of reproductive organ findings in repeat-dose studies, a dedicated fertility study is waived at this time. A fertility study will be conducted if warranted by clinical observations or regulatory request.',
       ],
     },
   ],
@@ -1040,6 +1034,7 @@ const fihDoseJustification: DocumentContent = {
       level: 1,
       paragraphs: [
         'Per ICH S9, for pharmaceuticals intended to treat patients with advanced cancer, the MRSD is calculated as one-tenth (1/10th) of the severely toxic dose in 10% of animals (STD10) in the most sensitive species, or one-sixth (1/6th) of the highest non-severely toxic dose (HNSTD). For VLX-4070, the HNSTD approach is used:',
+        'Both approaches support a starting dose in the range of approximately 15-50 mg.',
       ],
       lists: [
         {
@@ -1052,15 +1047,13 @@ const fihDoseJustification: DocumentContent = {
           ],
         },
       ],
-      paragraphs: [
-        'Both approaches support a starting dose in the range of approximately 15-50 mg.',
-      ],
     },
     {
       heading: 'Starting Dose Recommendation and Escalation Rationale',
       level: 1,
       paragraphs: [
         `Based on the above analyses, the recommended FIH starting dose for ${DRUG.code} is 50 mg QD (once daily oral administration). This dose is justified as follows:`,
+        `Dose escalation in the Phase 1 study will follow a modified 3+3 design with the following planned dose levels: ${DRUG.doses.join(', ')}. Dose escalation decisions will be guided by safety, tolerability, PK, and PD (pERK inhibition in tumor biopsies and ctDNA dynamics) data reviewed by the Safety Review Committee.`,
       ],
       lists: [
         {
@@ -1072,9 +1065,6 @@ const fihDoseJustification: DocumentContent = {
             'Clinical precedent: Approved KRAS G12C inhibitors (sotorasib, adagrasib) initiated FIH dosing at similar pharmacological activity-based starting doses.',
           ],
         },
-      ],
-      paragraphs: [
-        `Dose escalation in the Phase 1 study will follow a modified 3+3 design with the following planned dose levels: ${DRUG.doses.join(', ')}. Dose escalation decisions will be guided by safety, tolerability, PK, and PD (pERK inhibition in tumor biopsies and ctDNA dynamics) data reviewed by the Safety Review Committee.`,
       ],
       tables: [
         {
