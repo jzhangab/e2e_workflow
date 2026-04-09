@@ -31,6 +31,8 @@ export default function Card({ item }: CardProps) {
     try {
       const { generatePdf } = await import('../pdf/generator');
       await generatePdf(item.id);
+    } catch (err) {
+      console.error('[PDF generation failed]', item.id, err);
     } finally {
       setLoading(false);
     }
