@@ -29,10 +29,29 @@ export default function Card({ item }: CardProps) {
     if (loading) return;
     setLoading(true);
     try {
-      const { generatePdf } = await import('../pdf/generator');
-      await generatePdf(item.id);
-    } catch (err) {
-      console.error('[PDF generation failed]', item.id, err);
+      // Try static pre-built PDF first
+      const pdfUrl = `${import.meta.env.BASE_URL}pdfs/${item.id}.pdf`;
+      const resp = await fetch(pdfUrl, { method: 'HEAD' });
+      if (resp.ok) {
+        const a = document.createElement('a');
+        a.href = pdfUrl;
+        a.download = `${item.id}.pdf`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+      } else {
+        // Fallback to dynamic generation
+        const { generatePdf } = await import('../pdf/generator');
+        await generatePdf(item.id);
+      }
+    } catch {
+      // Final fallback to dynamic generation
+      try {
+        const { generatePdf } = await import('../pdf/generator');
+        await generatePdf(item.id);
+      } catch (innerErr) {
+        console.error('[PDF download failed]', item.id, innerErr);
+      }
     } finally {
       setLoading(false);
     }

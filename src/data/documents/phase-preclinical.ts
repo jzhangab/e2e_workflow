@@ -1,4 +1,4 @@
-import { registerDocument } from './index';
+import { registerDocument } from './registry';
 import { DRUG, TIMELINE } from '../drug-candidate';
 import type { DocumentContent } from '../../types';
 

@@ -1,4 +1,4 @@
-import { registerDocument } from './index';
+import { registerDocument } from './registry';
 import { DRUG, STUDIES, REGULATORY, EFFICACY, SAFETY, CDX } from '../drug-candidate';
 import type { DocumentContent } from '../../types';
 

@@ -1,6 +1,11 @@
 import { jsPDF } from 'jspdf';
-import autoTable from 'jspdf-autotable';
+import autoTableModule from 'jspdf-autotable';
 import type { DocumentContent, DocumentSection, TableData, ListData } from '../../types';
+
+// Handle CJS/ESM interop: in bundlers autoTableModule is the function directly,
+// in Node ESM it may be wrapped as { default: fn }.
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const autoTable: typeof autoTableModule = typeof (autoTableModule as any).default === 'function' ? (autoTableModule as any).default : autoTableModule;
 
 // ---------------------------------------------------------------------------
 // Page geometry (A4 portrait, millimetres)
@@ -274,7 +279,7 @@ export function renderSections(doc: jsPDF, sections: DocumentSection[], startY?:
     }
 
     // --- Lists ---
-    if (section.lists) {
+    if (Array.isArray(section.lists)) {
       for (const list of section.lists) {
         y = renderList(doc, list, y);
         y += 2;
