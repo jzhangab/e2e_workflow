@@ -1,5 +1,5 @@
-import { useState } from 'react';
 import { useFilter } from '../context/FilterContext';
+import { usePreview } from '../context/PreviewContext';
 import type { CardItem } from '../types';
 
 const ICONS: Record<string, string> = {
@@ -18,56 +18,40 @@ interface CardProps {
 
 export default function Card({ item }: CardProps) {
   const { activeFilter, searchQuery } = useFilter();
-  const [loading, setLoading] = useState(false);
+  const { selectedCard, selectCard } = usePreview();
 
   const matchesCat = activeFilter === 'all' || item.cat === activeFilter;
   const text = `${item.title} ${item.desc} ${item.tags.join(' ')}`.toLowerCase();
   const matchesSearch = !searchQuery || text.includes(searchQuery.toLowerCase());
   const dimmed = !(matchesCat && matchesSearch);
+  const isSelected = selectedCard?.id === item.id;
 
-  async function handleDownload() {
-    if (loading) return;
-    setLoading(true);
-    try {
-      // Try static pre-built PDF first
-      const pdfUrl = `${import.meta.env.BASE_URL}pdfs/${item.id}.pdf`;
-      const resp = await fetch(pdfUrl, { method: 'HEAD' });
-      if (resp.ok) {
-        const a = document.createElement('a');
-        a.href = pdfUrl;
-        a.download = `${item.id}.pdf`;
-        document.body.appendChild(a);
-        a.click();
-        document.body.removeChild(a);
-      } else {
-        // Fallback to dynamic generation
-        const { generatePdf } = await import('../pdf/generator');
-        await generatePdf(item.id);
-      }
-    } catch {
-      // Final fallback to dynamic generation
-      try {
-        const { generatePdf } = await import('../pdf/generator');
-        await generatePdf(item.id);
-      } catch (innerErr) {
-        console.error('[PDF download failed]', item.id, innerErr);
-      }
-    } finally {
-      setLoading(false);
-    }
+  function handleClick() {
+    selectCard(isSelected ? null : item);
+  }
+
+  function handleDownload(e: React.MouseEvent) {
+    e.stopPropagation();
+    const pdfUrl = `${import.meta.env.BASE_URL}pdfs/${item.id}.pdf`;
+    const a = document.createElement('a');
+    a.href = pdfUrl;
+    a.download = `${item.id}.pdf`;
+    document.body.appendChild(a);
+    a.click();
+    document.body.removeChild(a);
   }
 
   return (
     <div
-      className={`card${dimmed ? ' dimmed' : ''}`}
+      className={`card${dimmed ? ' dimmed' : ''}${isSelected ? ' selected' : ''}`}
       data-cat={item.cat}
-      onClick={handleDownload}
+      onClick={handleClick}
     >
-      {loading && (
-        <div className="card-loading-overlay">
-          <div className="card-spinner" />
-        </div>
-      )}
+      <button className="card-download" onClick={handleDownload} title="Download PDF">
+        <svg width="14" height="14" viewBox="0 0 16 16" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+          <path d="M8 2v9M4.5 7.5 8 11l3.5-3.5M3 14h10" />
+        </svg>
+      </button>
       <div className="card-title">
         <span className="icon">{ICONS[item.cat] || '\ud83d\udcc4'}</span>
         {item.title}
